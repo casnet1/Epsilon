@@ -6,7 +6,6 @@
         <div class="centro text-light">
           <h1>Epsilon System</h1>
           <h6>No maś decisiones dificiles</h6>
-          
             <router-link to="/login"><button type="button" class="btn btn-light">Iniciar Sesion</button>
             </router-link>
         </div>
@@ -59,7 +58,7 @@
       </button>
       <div class="d-flex justify-content-around my-5">
         <p>Oferta esperada: X</p>
-        <p>Precio esperado: X</p>
+        <p>ventas minimas para no perderle carnal: X</p>
         <p>demanda esperada: X</p>
       </div>
     </section>
@@ -133,8 +132,20 @@
 <script>
 export default {
   data() {
-    return {};
-  },
+    return {
+      prueba:{
+        m1:{
+          precio:'',
+          piezas:''
+        },
+         m2:{
+          precio:'',
+          piezas:''
+        }
+      }
+    };
+  }
+  
 };
 </script>
 

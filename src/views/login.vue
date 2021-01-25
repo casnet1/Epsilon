@@ -16,7 +16,7 @@
   </div>
 </form>
 <router-link to="/home">
-  <button type="button" class="btn btn-primary">home</button>
+  <button type="button" class="btn btn-primary">enviar</button>
 </router-link>
 </div>
 
