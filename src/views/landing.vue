@@ -38,8 +38,9 @@
             type="email"
             class="form-control"
             placeholder="el mes pasado"
+            v-model="m1.piezas"
           />
-          <input type="email" class="form-control" placeholder="este mes" />
+          <input type="email" class="form-control" placeholder="este mes"  v-model="m2.piezas" />
         </div>
         <div class="col">
           <p>piezas a un precio de...</p>
@@ -49,17 +50,18 @@
             type="email"
             class="form-control"
             placeholder="precio anterior"
+              v-model="m1.precio"
           />
-          <input type="email" class="form-control" placeholder="precio nuevo" />
+          <input type="email" class="form-control" placeholder="precio nuevo"   v-model="m2.precio" />
         </div>
       </div>
-      <button type="button" class="btn btn-light bg-success text-white">
+      <button type="button" class="btn btn-light bg-success text-white" @click="enviar()">
         Calcular
       </button>
       <div class="d-flex justify-content-around my-5">
-        <p>Oferta esperada: X</p>
-        <p>ventas minimas para no perderle carnal: X</p>
-        <p>demanda esperada: X</p>
+        <p>Oferta esperada: {{resp.oferta}}</p>
+        <p>ventas minimas para no perderle carnal: {{resp.ganancia}}</p>
+        <p>demanda esperada: {{resp.demanda}}</p>
       </div>
     </section>
 
@@ -126,14 +128,17 @@
     <footer>
       <p class="text-white">© Copyright DevelopersCool</p>
     </footer>
+  
   </div>
 </template>
 
 <script>
+import config from "../config/config.js";
+import axios from 'axios'
 export default {
   data() {
     return {
-      prueba:{
+    
         m1:{
           precio:'',
           piezas:''
@@ -141,9 +146,36 @@ export default {
          m2:{
           precio:'',
           piezas:''
+        },
+        resp:{
+          oferta:'x',
+          ganancia:'y',
+          demanda:'z'
         }
-      }
+      
     };
+  },
+  methods:{
+    enviar () {
+    this.$swal('Heading', 'this is a Heading', 'success');
+
+    const data = {
+      var1a: this.m1.precio,
+       var1b: this.m1.piezas,
+        var2a: this.m1.precio,
+         var2b: this.m2.piezas
+    }
+
+    axios
+    .post(`${config.api}/loginAdmin`,data)
+    .then(res =>{
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+    }
   }
   
 };
